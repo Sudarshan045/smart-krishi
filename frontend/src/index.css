@@ -1,4 +1,4 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 
 @theme {
   --font-sans: Inter, system-ui, sans-serif;
@@ -8,12 +8,24 @@
   body {
     @apply m-0 min-h-screen bg-gradient-to-br from-green-50 to-amber-50;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  body::-webkit-scrollbar {
+    display: none;
   }
 }
 
 @layer utilities {
   .container-custom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
 
@@ -113,22 +125,13 @@
   color: transparent;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
+/* Custom Scrollbar - Hidden for Clean UI */
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #16a34a, #f59e0b);
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #15803d, #d97706);
+html::-webkit-scrollbar {
+  display: none;
 }
 
 /* Loading Animation */

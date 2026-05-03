@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Users, TrendingUp, Calendar, Eye, UserCheck, Activity, DollarSign, Award } from 'lucide-react';
+import { adminService } from '../services/adminService';
 
 const AdminDashboard = () => {
   const [users, setUsers] = useState([]);
@@ -10,35 +11,32 @@ const AdminDashboard = () => {
     totalFarms: 0
   });
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    // Load users from localStorage
-    const registeredUsers = localStorage.getItem('registeredUsers');
-    if (registeredUsers) {
-      const usersList = JSON.parse(registeredUsers);
-      setUsers(usersList);
-      setStats({
-        totalUsers: usersList.length,
-        activeUsers: usersList.filter(u => u.active !== false).length,
-        totalCalculations: Math.floor(Math.random() * 100) + 50,
-        totalFarms: Math.floor(Math.random() * 80) + 30
-      });
-    } else {
-      // Mock data for demo
-      const mockUsers = [
-        { id: 1, name: 'Rajesh Patil', email: 'rajesh@example.com', role: 'user', registeredDate: '2024-01-15', active: true },
-        { id: 2, name: 'Suresh Deshmukh', email: 'suresh@example.com', role: 'user', registeredDate: '2024-02-20', active: true },
-        { id: 3, name: 'Anita Kale', email: 'anita@example.com', role: 'user', registeredDate: '2024-03-10', active: false }
-      ];
-      setUsers(mockUsers);
-      localStorage.setItem('registeredUsers', JSON.stringify(mockUsers));
-      setStats({
-        totalUsers: mockUsers.length,
-        activeUsers: mockUsers.filter(u => u.active).length,
-        totalCalculations: 78,
-        totalFarms: 45
-      });
-    }
+    fetchAdminData();
   }, []);
+
+  const fetchAdminData = async () => {
+    try {
+      setLoading(true);
+      const [statsRes, usersRes] = await Promise.all([
+        adminService.getStats(),
+        adminService.getUsers()
+      ]);
+      setStats({
+        totalUsers: statsRes.data.totalUsers,
+        activeUsers: statsRes.data.totalUsers, // backend doesn't explicitly track active state yet, using total
+        totalCalculations: statsRes.data.totalCalculations,
+        totalFarms: statsRes.data.totalFarms
+      });
+      setUsers(usersRes.data);
+    } catch (error) {
+      console.error("Failed to load admin data", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const statsCards = [
     { icon: Users, label: 'Total Users', value: stats.totalUsers, color: 'bg-blue-500' },
@@ -88,7 +86,7 @@ const AdminDashboard = () => {
               </thead>
               <tbody className="divide-y divide-gray-200">
                 {users.map((user) => (
-                  <tr key={user.id} className="hover:bg-gray-50">
+                  <tr key={user._id} className="hover:bg-gray-50">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="bg-green-100 rounded-full p-2 mr-3">
@@ -100,17 +98,19 @@ const AdminDashboard = () => {
                     <td className="px-6 py-4 whitespace-nowrap text-gray-600">{user.email}</td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="px-2 py-1 text-xs rounded bg-green-100 text-green-700">
-                        {user.role || 'user'}
+                        {user.role}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-gray-600">{user.registeredDate}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-gray-600">
+                      {new Date(user.createdAt).toLocaleDateString()}
+                    </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className={`px-2 py-1 text-xs rounded ${
-                        user.active 
+                        user.is_active !== false
                           ? 'bg-green-100 text-green-700' 
                           : 'bg-red-100 text-red-700'
                       }`}>
-                        {user.active ? 'Active' : 'Inactive'}
+                        {user.is_active !== false ? 'Active' : 'Inactive'}
                       </span>
                     </td>
                   </tr>
