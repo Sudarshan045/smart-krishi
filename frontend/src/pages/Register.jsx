@@ -271,7 +271,11 @@ const Register = () => {
 
           <div className="mt-8 text-center">
             <button 
-              onClick={() => window.location.href = `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/auth/google`}
+              onClick={() => {
+                const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+                const authUrl = baseUrl.endsWith('/api') ? `${baseUrl}/auth/google` : `${baseUrl}/api/auth/google`;
+                window.location.href = authUrl;
+              }}
               className="w-full flex items-center justify-center gap-4 py-4 bg-white border-2 border-gray-100 rounded-2xl font-black text-[10px] uppercase tracking-widest text-gray-600 hover:bg-gray-50 transition-all mb-6"
             >
               <img src="https://www.google.com/favicon.ico" className="w-4 h-4" alt="G" />
