@@ -47,7 +47,8 @@ const DiseaseDetection = () => {
       console.log("Initiating Specialist Vision Analysis...");
       
       // Send image to our Specialist Backend AI
-      const apiUrl = `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/ai/analyze-image`;
+      const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const apiUrl = baseUrl.replace(/\/api$/, '') + '/api/ai/analyze-image';
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

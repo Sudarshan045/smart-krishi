@@ -57,7 +57,8 @@ const Chatbot = () => {
     setIsTyping(true);
 
     try {
-      const apiUrl = `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/ai/chat`;
+      const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const apiUrl = baseUrl.replace(/\/api$/, '') + '/api/ai/chat';
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
