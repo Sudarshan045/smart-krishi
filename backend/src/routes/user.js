@@ -18,8 +18,8 @@ const updateProfileValidation = [
   body('name').optional().trim().isLength({ min: 2, max: 100 }).withMessage('Name must be 2-100 characters'),
   body('mobile').optional({ nullable: true }).matches(/^[6-9]\d{9}$/).withMessage('Enter a valid 10-digit mobile number'),
   body('farm_size').optional({ nullable: true }).isFloat({ min: 0 }).withMessage('Farm size must be a positive number'),
-  body('soil_type').optional({ nullable: true }).isIn(['loamy', 'clay', 'sandy', 'black', 'red', 'laterite', '']),
-  body('irrigation_type').optional({ nullable: true }).isIn(['drip', 'sprinkler', 'flood', 'rainfed', '']),
+  body('soil_type').optional({ nullable: true }).isIn(['Black Cotton', 'Red Loamy', 'Alluvial', 'Laterite', 'loamy', 'clay', 'sandy', 'black', 'red', '']),
+  body('irrigation_type').optional({ nullable: true }).isIn(['Drip', 'Sprinkler', 'Flood', 'Rainfed', 'drip', 'sprinkler', 'flood', 'rainfed', '']),
   body('preferred_language').optional().isIn(['en', 'mr']),
 ];
 
