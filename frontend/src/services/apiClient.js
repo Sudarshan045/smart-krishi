@@ -1,9 +1,9 @@
 // src/services/apiClient.js
 import axios from 'axios';
 
-// Base URL — in dev, Vite proxies /api → http://localhost:5000
-// In production, set VITE_API_URL in .env
-const BASE_URL = import.meta.env.VITE_API_URL || '/api';
+// Base URL — automatically ensures /api suffix is present for consistency
+const rawBaseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const BASE_URL = rawBaseUrl.endsWith('/api') ? rawBaseUrl : `${rawBaseUrl}/api`;
 
 const apiClient = axios.create({
   baseURL: BASE_URL,
