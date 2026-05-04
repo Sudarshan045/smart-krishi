@@ -24,7 +24,17 @@ const marathiDict = {
   'Home': 'मुख्य पान', 'Farming Basics': 'शेतीची माहिती', 'Crop Guide': 'पीक सल्ला',
   'Calculator': 'हिशोब', 'Calendar': 'कॅलेंडर', 'Schemes': 'सरकारी योजना',
   'Videos': 'व्हिडिओ', 'Help': 'मदत', 'Profile': 'माझी माहिती',
-  'Login': 'लॉगिन', 'Register': 'नोंदणी', 'Logout': 'बाहेर पडा',
+  'Login': 'लॉगिन', 'Register': 'नोंदणी', 'Logout': 'बाहेर पडा', 'About Us': 'आमच्याबद्दल',
+  'Meet Our': 'आमच्या', 'Incredible Team': 'उत्कृष्ट टीमला भेटा',
+  'We are a group of dedicated students working towards modernizing agriculture through technology. Our mission is to empower farmers with AI-driven insights.': 'आम्ही तंत्रज्ञानाद्वारे शेतीचे आधुनिकीकरण करण्यासाठी समर्पित विद्यार्थ्यांचा एक गट आहोत. आमचे ध्येय शेतकऱ्यांना AI-आधारित माहितीसह सक्षम करणे आहे.',
+  'Our Mission': 'आमचे ध्येय',
+  'Smart Krishi is born out of a desire to bridge the gap between traditional farming and modern technology. By leveraging Artificial Intelligence, we aim to provide farmers with real-time advice, disease detection, and market trends, all in their local language.': 'पारंपारिक शेती and आधुनिक तंत्रज्ञान यांच्यातील अंतर कमी करण्याच्या इच्छेतून स्मार्ट कृषीचा जन्म झाला आहे. आर्टिफिशियल इंटेलिजन्सचा वापर करून, आम्ही शेतकऱ्यांना त्यांच्या स्थानिक भाषेत रिअल-टाइम सल्ला, रोग ओळख आणि बाजारपेठेतील कल प्रदान करण्याचे उद्दिष्ट ठेवतो.',
+  'Lead Full Stack Developer': 'प्रमुख फुल स्टॅक डेव्हलपर', 'Backend & API Engineer': 'बॅकएंड आणि एपीआय इंजिनिअर',
+  'Frontend & UI/UX Specialist': 'फ्रंटएंड आणि यूआय/यूएक्स तज्ज्ञ', 'Researcher & Data Analyst': 'संशोधक आणि डेटा विश्लेषक',
+  'Passionate about building AI-driven solutions for modern agriculture.': 'आधुनिक शेतीसाठी AI-आधारित उपाय तयार करण्याबद्दल उत्कट.',
+  'Expert in scalable backend architectures and agricultural data analysis.': 'स्केलेबल बॅकएंड आर्किटेक्चर आणि कृषी डेटा विश्लेषणामधील तज्ज्ञ.',
+  'Focused on creating intuitive and accessible interfaces for farmers.': 'शेतकऱ्यांसाठी अंतर्ज्ञानी आणि सुलभ इंटरफेस तयार करण्यावर लक्ष केंद्रित.',
+  'Specializes in crop disease research and AI model optimization.': 'पीक रोग संशोधन आणि AI मॉडेल ऑप्टिमायझेशनमध्ये तज्ज्ञ.',
 
   // Districts & Seasons
   'District': 'जिल्हा',
@@ -437,6 +447,7 @@ const translations = {
     'nav.login': 'Login', 'nav.register': 'Register', 'nav.logout': 'Logout',
     'nav.disease_detection': 'Disease Detection',
     'nav.marketplace': 'Marketplace',
+    'nav.about': 'About Us',
   },
   mr: {
     'nav.home': 'मुख्य पान', 'nav.farming_basics': 'शेतीची माहिती', 'nav.crop_guide': 'पीक सल्ला',
@@ -446,6 +457,7 @@ const translations = {
     'nav.login': 'लॉगिन करा', 'nav.register': 'नवीन नोंदणी', 'nav.logout': 'बाहेर पडा',
     'nav.disease_detection': 'पीक रोग ओळख',
     'nav.marketplace': 'कृषी बाजारपेठ',
+    'nav.about': 'आमच्याबद्दल',
   }
 };
 

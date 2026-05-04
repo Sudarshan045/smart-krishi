@@ -22,6 +22,7 @@ const Footer = () => {
               <li><a href="/calculator" className="hover:text-white"><TranslatedText>Agri Calculator</TranslatedText></a></li>
               <li><a href="/schemes" className="hover:text-white"><TranslatedText>Government Schemes</TranslatedText></a></li>
               <li><a href="/help" className="hover:text-white"><TranslatedText>Help & Support</TranslatedText></a></li>
+              <li><a href="/about" className="hover:text-white"><TranslatedText>About Us</TranslatedText></a></li>
             </ul>
           </div>
           <div>

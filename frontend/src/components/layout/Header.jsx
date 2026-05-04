@@ -41,6 +41,7 @@ const Header = () => {
     { name: t('nav.schemes'), path: '/schemes' },
     { name: t('nav.videos'), path: '/videos' },
     { name: t('nav.help'), path: '/help' },
+    { name: t('nav.about'), path: '/about' },
   ]
 
   const getLinkClass = (path, exact = false) => {

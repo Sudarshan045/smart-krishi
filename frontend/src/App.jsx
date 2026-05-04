@@ -19,6 +19,7 @@ import DiseaseDetection from './pages/DiseaseDetection';
 import Marketplace from './pages/Marketplace';
 import SmartAdvisor from './pages/SmartAdvisor';
 import AuthSuccess from './pages/AuthSuccess';
+import About from './pages/About';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import WeatherWidget from './components/WeatherWidget';
@@ -67,6 +68,7 @@ function App() {
                     <Route path="/marketplace" element={<Marketplace />} />
                     <Route path="/smart-advisor" element={<SmartAdvisor />} />
                     <Route path="/auth-success" element={<AuthSuccess />} />
+                    <Route path="/about" element={<About />} />
                   </Routes>
                 </main>
                 <WeatherWidget />
